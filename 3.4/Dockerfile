@@ -77,11 +77,11 @@ RUN set -eux; \
 	chown redmine:redmine "$HOME"; \
 	chmod 1777 "$HOME"
 
-ENV REDMINE_VERSION 3.4.13
-ENV REDMINE_DOWNLOAD_MD5 5f17b35dfe73118067f63fb535332cfb
+ENV REDMINE_VERSION 3.4.2
+ENV REDMINE_DOWNLOAD_MD5 9f5c5a87dfdff978280847d3ca63e62b
 
 RUN set -eux; \
-	wget -O redmine.tar.gz "https://www.redmine.org/releases/redmine-${REDMINE_VERSION}.tar.gz"; \
+	wget -O redmine.tar.gz "https://github.com/Scalefast/redmine/archive/${REDMINE_VERSION}-scalefast.tar.gz"; \
 	echo "$REDMINE_DOWNLOAD_MD5 *redmine.tar.gz" | md5sum -c -; \
 	tar -xf redmine.tar.gz --strip-components=1; \
 	rm redmine.tar.gz files/delete.me log/delete.me; \
