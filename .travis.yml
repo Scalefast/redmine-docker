@@ -13,6 +13,7 @@ install:
   - git clone https://github.com/docker-library/official-images.git ~/official-images
 
 before_script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - env | sort
   - wget -qO- 'https://github.com/tianon/pgp-happy-eyeballs/raw/master/hack-my-builds.sh' | bash
   - cd "$VERSION"
@@ -33,5 +34,6 @@ script:
 
 after_script:
   - docker images
+  - docker push scalefast/redmine:${VERSION//\//-}-scalefast
 
 # vim:set et ts=2 sw=2:
