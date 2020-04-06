@@ -34,6 +34,7 @@ script:
 
 after_script:
   - docker images
-  - docker push scalefast/redmine:${VERSION//\//-}-scalefast
+  - docker push ${image}
+  - docker push ${image}-passenger
 
 # vim:set et ts=2 sw=2:
