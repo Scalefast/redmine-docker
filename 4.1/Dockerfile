@@ -82,7 +82,7 @@ ENV REDMINE_VERSION 4.1.1
 ENV REDMINE_DOWNLOAD_MD5 d588c8511322a1dbe01850166d9624bb
 
 RUN set -eux; \
-	wget -O redmine.tar.gz "https://github.com/Scalefast/redmine/archive/${REDMINE_VERSION}-scalefast.tar.gz"; \
+	wget -O redmine.tar.gz "https://github.com/Scalefast/redmine/archive/${REDMINE_VERSION}.tar.gz"; \
 	echo "$REDMINE_DOWNLOAD_MD5 *redmine.tar.gz" | md5sum -c -; \
 	tar -xf redmine.tar.gz --strip-components=1; \
 	rm redmine.tar.gz files/delete.me log/delete.me; \
