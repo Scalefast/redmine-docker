@@ -64,6 +64,10 @@ RUN set -eux; \
 	apt-mark auto '.*' > /dev/null; \
 	[ -z "$savedAptMark" ] || apt-mark manual $savedAptMark; \
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
+	
+RUN set -eux; \
+	apt-get update; \
+	apt-get install shared-mime-info -y
 
 ENV RAILS_ENV production
 WORKDIR /usr/src/redmine
